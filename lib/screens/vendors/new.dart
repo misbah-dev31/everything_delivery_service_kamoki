@@ -1,14 +1,8 @@
-import'package:material_ui/material_ui.dart;
-
-
-class MyApp extends Statelesswidget {
-
-const MyApp ({super.key});
-
-@override
-widget build (BuildContext context){
-
-return Container();
+import 'package:material_ui/material_ui.dart';
+class MyApp extends StatelessWidget{
+    const MyApp({super.key});
+    @override
+  Widget build(BuildContext context) {
+   return Container();
+  }
 }
-}
-

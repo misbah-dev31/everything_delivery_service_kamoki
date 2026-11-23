@@ -1,6 +1,6 @@
 import 'package:every_thing_dilevery/screens/authentication/login.dart';
 import 'package:every_thing_dilevery/screens/routes/app_routes.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:get/get.dart';
 
 void main(){

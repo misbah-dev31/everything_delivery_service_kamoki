@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:get/get.dart';
+import '../admins/admin_dashboard.dart';
 
-import '../admins/dashboard.dart';
-
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+   LoginScreen({super.key});
+  TextEditingController emailController =
+    TextEditingController();
+    TextEditingController passwordController =
+    TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +116,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 12),
 
                 TextField(
+                  controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'you@example.com',
@@ -145,7 +151,7 @@ class LoginScreen extends StatelessWidget {
 
                     TextButton(
                       onPressed: () {
-                      
+                                           
                       },
                       child: const Text(
                         'Forgot password?',
@@ -159,17 +165,22 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 TextField(
-                  obscureText: true,
+                         controller: passwordController,
+                 obscureText: true,
+             
                   decoration: InputDecoration(
+                   
+             
                     hintText: 'Enter your password',
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: Colors.grey,
                     ),
                     suffixIcon: const Icon(
-                      Icons.visibility_off_outlined,
+                      Icons.remove_red_eye,
                       color: Colors.grey,
                     ),
+                    
                     filled: true,
                     fillColor: Colors.grey.shade100,
                     border: OutlineInputBorder(
@@ -188,12 +199,64 @@ class LoginScreen extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed: () {
-                       Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => AdminDashboard(),
-  ),
-);
+                String admin_email = emailController.text;
+                 String customer_email = emailController.text;
+                 String vendor_email = emailController.text;
+                 String rider_email = emailController.text;
+                
+
+                String password = passwordController.text;
+                    if (admin_email == "admin@gmail.com" &&
+                    password == "123456") {
+                      
+
+                  Get.snackbar(
+                    "Success",
+                    "Login Successful",
+                  );
+
+                  Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdminDashboard(),
+              ),
+            );
+    } 
+            else if(customer_email == "customer@gmail.com" &&
+                password == "123456"){
+                  Get.snackbar(
+                "Success",
+                "Login Successful",
+              );
+            //  yha abhi saba ka rider wala likhna hy 
+            Get.toNamed('/customer_dashboard');
+
+        }
+        else if(rider_email == "rider@gmail.com" &&
+                  password == "123456"){
+                  Get.snackbar(
+                        "Success",
+                        "Login Successful",
+                                );
+               Get.toNamed('./rider_dashboard')    ;   
+                  }
+                   else if(vendor_email == "vendor@gmail.com" &&
+                  password == "123456"){
+                  Get.snackbar(
+                        "Success",
+                        "Login Successful",
+                                );
+               Get.toNamed('./vendor_dashboard')    ;   
+                  }
+              else {
+
+                Get.snackbar(
+                  "Error",
+                  "Invalid Email or Password",
+                );
+              }
+
+//                        
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrange,

@@ -70,7 +70,7 @@ class VendorDashboard extends StatelessWidget {
                           Text("Today's Orders"),
                           SizedBox(height: 10),
                           Text(
-                            '28',
+                            '56',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -96,7 +96,7 @@ class VendorDashboard extends StatelessWidget {
                           Text("Today's Revenue"),
                           SizedBox(height: 10),
                           Text(
-                            'Rs. 34.8k',
+                            'Rs. 28.8k',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,

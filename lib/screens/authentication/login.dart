@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:get/get.dart';
-import '../admins/admin_dashboard.dart';
+
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
                       height: 60,
                       width: 60,
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange,
+                    color: const Color(0xFFF5822A),
                         borderRadius: BorderRadius.circular(18),
                       ),
                       child: const Icon(
@@ -67,10 +67,10 @@ class LoginScreen extends StatelessWidget {
 
                     const Spacer(),
 
-                    const Text(
+                    Text(
                       'CUSTOMER',
                       style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Colors.orange.shade300.withOpacity(0.4),
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
@@ -86,8 +86,9 @@ class LoginScreen extends StatelessWidget {
                   'Welcome back',
                   style: TextStyle(
                     fontSize: 38,
-                    fontWeight: FontWeight.w400,
+                    // fontWeight: FontWeight.w400,
                     color: Colors.black87,
+                       fontWeight: FontWeight.bold,
                   ),
                 ),
 
@@ -109,7 +110,8 @@ class LoginScreen extends StatelessWidget {
                   'Email address',
                   style: TextStyle(
                     fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                    // fontWeight: FontWeight.w600,
+                       fontWeight: FontWeight.bold,
                   ),
                 ),
 
@@ -156,7 +158,8 @@ class LoginScreen extends StatelessWidget {
                       child: const Text(
                         'Forgot password?',
                         style: TextStyle(
-                          color: Colors.deepOrange,
+                          color: const Color(0xFFF5822A),
+                             
                           fontSize: 12,
                         ),
                       ),
@@ -195,87 +198,68 @@ class LoginScreen extends StatelessWidget {
                 // 5. SIGN IN BUTTON
 
                 SizedBox(
-                  width: double.infinity,
-                  height: 55,
-                  child: ElevatedButton(
-                    onPressed: () {
-                String admin_email = emailController.text;
-                 String customer_email = emailController.text;
-                 String vendor_email = emailController.text;
-                 String rider_email = emailController.text;
-                
+  width: double.infinity,
+  height: 55,
+  child: ElevatedButton(
+    onPressed: () {
+      final adminEmail = emailController.text;
+      final customerEmail = emailController.text;
+      final vendorEmail = emailController.text;
+      final riderEmail = emailController.text;
+      final password = passwordController.text;
 
-                String password = passwordController.text;
-                    if (admin_email == "admin@gmail.com" &&
-                    password == "123456") {
-                      
-
-                  Get.snackbar(
-                    "Success",
-                    "Login Successful",
-                  );
-
-                  Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AdminDashboard(),
-              ),
-            );
-    } 
-            else if(customer_email == "customer@gmail.com" &&
-                password == "123456"){
-                  Get.snackbar(
-                "Success",
-                "Login Successful",
-              );
-            //  yha abhi saba ka rider wala likhna hy 
-            Get.toNamed('/customer_dashboard');
-
-        }
-        else if(rider_email == "rider@gmail.com" &&
-                  password == "123456"){
-                  Get.snackbar(
-                        "Success",
-                        "Login Successful",
-                                );
-               Get.toNamed('./rider_dashboard')    ;   
-                  }
-                   else if(vendor_email == "vendor@gmail.com" &&
-                  password == "123456"){
-                  Get.snackbar(
-                        "Success",
-                        "Login Successful",
-                                );
-               Get.toNamed('./vendor_dashboard')    ;   
-                  }
-              else {
-
-                Get.snackbar(
-                  "Error",
-                  "Invalid Email or Password",
-                );
-              }
-
-//                        
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'Sign in',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-
+      if (adminEmail == "admin@gmail.com" &&
+          password == "123456") {
+        Get.snackbar(
+          "Success",
+          "Login Successful",
+        );
+        Get.toNamed('./admin_dashboard');
+      } else if (customerEmail == "customer@gmail.com" &&
+          password == "123456") {
+        Get.snackbar(
+          "Success",
+          "Login Successful",
+        );
+        Get.toNamed('/customer_dashboard');
+      } else if (riderEmail == "rider@gmail.com" &&
+          password == "123456") {
+        Get.snackbar(
+          "Success",
+          "Login Successful",
+        );
+        Get.toNamed('./rider_dashboard');
+      } else if (vendorEmail == "vendor@gmail.com" &&
+          password == "123456") {
+        Get.snackbar(
+          "Success",
+          "Login Successful",
+        );
+        Get.toNamed('./vendor_dashboard');
+      } else {
+        Get.snackbar(
+          "Error",
+          "Invalid Email or Password",
+        );
+      }
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFF5822A),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 0,
+    ),
+    child: const Text(
+      'Sign in',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ),
+    ),
+  ),
+),
                 const SizedBox(height: 28),
 
                 // 6. CREATE ACCOUNT
@@ -297,7 +281,7 @@ class LoginScreen extends StatelessWidget {
                       child: const Text(
                         'Create account',
                         style: TextStyle(
-                          color: Colors.deepOrange,
+                          color: const Color(0xFFF5822A),
                           fontWeight: FontWeight.bold,
                           fontSize: 13,
                         ),
@@ -325,15 +309,13 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     const Text(
                       'Terms of Service',
                       style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Color(0xFFF5822A),
                         fontSize: 11,
                       ),
                     ),
-
                     const Text(
                       '  &  ',
                       style: TextStyle(
@@ -341,22 +323,21 @@ class LoginScreen extends StatelessWidget {
                         fontSize: 11,
                       ),
                     ),
-
                     const Text(
                       'Privacy Policy',
                       style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Color(0xFFF5822A),
                         fontSize: 11,
                       ),
                     ),
                   ],
                 ),
-
               ],
             ),
           ),
         ),
       ),
     );
+   
   }
 }
